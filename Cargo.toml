@@ -1,0 +1,64 @@
+[package]
+name = "sdp-rs"
+version = "0.2.0"
+edition = "2021"
+rust-version = "1.82"
+license = "MIT OR Apache-2.0"
+description = "Pure-Rust SDP (RFC 8866) parser/generator with WebRTC profile extensions: BUNDLE, rtcp-mux, ICE, DTLS-SRTP fingerprints, and H.264 / Opus fmtp helpers"
+authors = ["Per Johansson <per@doom.fish>"]
+homepage = "https://github.com/doom-fish/sdp-rs"
+repository = "https://github.com/doom-fish/sdp-rs"
+keywords = ["sdp", "webrtc", "rfc8866", "rtp", "ice"]
+categories = ["network-programming", "parser-implementations", "multimedia"]
+readme = "README.md"
+build = "build.rs"
+publish = false
+include = [
+    "src/**/*",
+    "build.rs",
+    "Cargo.toml",
+    "README.md",
+    "LICENSE-*",
+    "CHANGELOG.md",
+    "COVERAGE.md",
+]
+
+[lib]
+name = "sdp"
+crate-type = ["lib"]
+
+[features]
+default = []
+
+[lints.rust]
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }
+cargo = { level = "warn", priority = -1 }
+
+[dependencies]
+
+[build-dependencies]
+
+[dev-dependencies]
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[badges]
+maintenance = { status = "actively-developed" }
+
+[profile.release]
+opt-level = 3
+lto = true
+
+[[example]]
+name = "01_parse_offer"
+
+[[example]]
+name = "02_build_answer"
+
+[[example]]
+name = "03_round_trip"
