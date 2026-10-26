@@ -82,7 +82,7 @@ mod tests {
     #[test]
     fn empty_bundle() {
         let g = Group::parse("BUNDLE").expect("parse");
-        assert!(g.mids.is_empty());
+        assert_eq!(g.mids, [] as [std::string::String; 0]);
         assert_eq!(g.to_string(), "BUNDLE");
     }
 }

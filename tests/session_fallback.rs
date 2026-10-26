@@ -85,12 +85,10 @@ fn candidates_are_listed_in_order() {
     assert_eq!(candidates[0].kind, "host");
     assert_eq!(candidates[1].kind, "srflx");
     assert_eq!(candidates[1].rel_port, Some(61665));
-    assert!(offer
-        .sdp()
-        .media_by_mid("1")
-        .unwrap()
-        .candidates()
-        .is_empty());
+    assert_eq!(
+        offer.sdp().media_by_mid("1").unwrap().candidates(),
+        [] as [&sdp::Candidate; 0]
+    );
 }
 
 #[test]
